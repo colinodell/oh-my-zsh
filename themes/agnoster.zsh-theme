@@ -175,6 +175,13 @@ prompt_virtualenv() {
   fi
 }
 
+prompt_phpbrew() {
+  if type "php" > /dev/null; then
+    local version=$(php -v | grep -E "PHP [57]" | sed 's/.*PHP \([^-]*\).*/\1/' | cut -c 1-6)
+    prompt_segment magenta white "PHP $version"
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -194,6 +201,7 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
+  prompt_phpbrew
   prompt_context
   prompt_dir
   prompt_git
