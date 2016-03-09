@@ -209,7 +209,6 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   prompt_phpbrew
-  prompt_context
   prompt_nvm
   prompt_dir
   prompt_git
