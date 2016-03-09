@@ -182,6 +182,13 @@ prompt_phpbrew() {
   fi
 }
 
+prompt_nvm() {
+  if type "node" > /dev/null; then
+    local version=$(node -v | cut -c 2-)
+    prompt_segment black default "Node $version"
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -203,6 +210,7 @@ build_prompt() {
   prompt_virtualenv
   prompt_phpbrew
   prompt_context
+  prompt_nvm
   prompt_dir
   prompt_git
   prompt_hg
